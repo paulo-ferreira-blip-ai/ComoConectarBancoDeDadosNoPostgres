@@ -1,40 +1,49 @@
 package Conexao;
 
-import java.sql.ResultSet;
+
 import java.util.Scanner;
 
 public class MainTesteConexao {
     public static void main(String[] args) {
-        ConnectionFacture con = new ConnectionFacture();
-       /* con.getConnection();
+        ConnectionFactures con = new ConnectionFactures();
 
+        Scanner input = new Scanner(System.in);
+        int resposta = 0;
+        boolean c = true;
+        while (c==true){
+            System.out.println("Digite 1 para adicionar um estado a tabela: ");
+            System.out.println("Digite 2 para excluir um estado da tabela: ");
+            System.out.println("Digite 3 para mostrar dados da tabela: ");
+            System.out.println("Digite 4 para sair: ");
 
-        String SQL = "INSERT INTO estado (id_estado, nome_estado, sigla_estado)" +
-                "values (default, 'Pará', 'PA')";
-        int receber = con.adicionarEstado(SQL);
-        if (receber > 0){
-            System.out.println("Cadastro Realizado!");
-        }else {
-            System.out.println("Cadastro não realizado.");
-        }*/
+            resposta = input.nextInt();
 
-        String SQLbuscaEstado = "Selec * from estado";
-        ResultSet rs = con.buscaEstado(SQLbuscaEstado);
+            switch (resposta){
+                case 1:
+                    InserirEstado ins = new InserirEstado();
+                    ins.inserir();
+                    break;
+                case 2:
+                    ExcluirEstado exc =new ExcluirEstado();
+                    exc.excluir();
+                    break;
+                case 3:
+                    ListarEBuscarEstado estado = new ListarEBuscarEstado();
+                    for (Estado e : estado.listar()
+                    ) {
+                        System.out.println(e.toString());
 
-        try {
-            while (rs.next()){
-                int id_estado = rs.getInt("id_estado");
-                String nomeEstado = rs.getString("nome_estado");
-                String siglaEstado = rs.getString("sigla_estado");
-                System.out.println(id_estado+ " - "+ nomeEstado+" - "+siglaEstado);
+                    }
+                    break;
+                case 4:
+                    c = false;
+                    break;
+
+                default:
+                    System.out.println("Comando inválido!");
+
             }
-
-
-        }catch (Exception e){
-            e.printStackTrace();
         }
-
-
     }
 
 }
