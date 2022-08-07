@@ -5,8 +5,6 @@ import java.util.Scanner;
 
 public class MainTesteConexao {
     public static void main(String[] args) {
-        ConnectionFactures con = new ConnectionFactures();
-
         Scanner input = new Scanner(System.in);
         int resposta = 0;
         boolean c = true;
@@ -20,18 +18,18 @@ public class MainTesteConexao {
 
             switch (resposta){
                 case 1:
-                    InserirEstado ins = new InserirEstado();
-                    ins.inserir();
+                    InserirEstado inserindoNovoEstado = new InserirEstado();
+                    inserindoNovoEstado.inserir();
                     break;
                 case 2:
-                    ExcluirEstado exc =new ExcluirEstado();
-                    exc.excluir();
+                    ExcluirEstado excluindoEstado =new ExcluirEstado();
+                    excluindoEstado.excluir();
                     break;
                 case 3:
                     ListarEBuscarEstado estado = new ListarEBuscarEstado();
-                    for (Estado e : estado.listar()
+                    for (Estado recebendoLista : estado.listar()
                     ) {
-                        System.out.println(e.toString());
+                        System.out.println(recebendoLista.toString());
 
                     }
                     break;

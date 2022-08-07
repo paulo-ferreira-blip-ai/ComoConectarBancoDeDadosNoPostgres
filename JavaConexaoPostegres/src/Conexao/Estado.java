@@ -31,10 +31,10 @@ public class Estado {
 
     @Override
     public String toString() {
-        return "Estado: Infos {" +
-                "id=" + id +
-                ", nome_estado='" + nome_estado + '\'' +
-                ", sigla_estado='" + sigla_estado + '\'' +
+        return "Estado: Informações {" +
+                "id: " + id +
+                ", nome_estado: '" + nome_estado + '\'' +
+                ", sigla_estado: '" + sigla_estado + '\'' +
                 '}';
     }
 }
